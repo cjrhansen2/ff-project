@@ -1,16 +1,18 @@
-const sportsdataio = 'https://api.sportsdata.io/v3/nfl';
-const apiKey = 'e0c645b4a8594f6d99e7c453ba756fd2';
-const gameInProgress = '/scores/json/AreAnyGamesInProgress'
+const profootballAPI = 'https://profootballapi.com';
+const apiKey = '?api_key=NKWzXrvIJ2pacls6bSdjEUHoin8RCGM5';
+const offense = '&stats_type=offense';
 
-function apiCall(baseURL, extURL, key) {
-    var callURL = baseURL + extURL + '?key=' + key;
+function players_apiCall(baseURL, key, statsType) {
+    var players_callURL = baseURL + '/players' + key + statsType + '&player_name=d.watson';
     $.ajax({
-        url: callURL,
-        method: "GET"
+        url: players_callURL,
+        method: "POST"
     })
-    .then(function (response) {
+    .then(response => {
         console.log(response);
+        //var output = response;
     });
+    //console.log(output);
 }
 
-apiCall(sportsdataio,gameInProgress,apiKey);
+players_apiCall(profootballAPI,apiKey,offense);

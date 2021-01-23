@@ -15,3 +15,8 @@ h1 {
     padding: 10px;
     margin: 5px;
 }
+
+.stable-scroll {
+    overflow-y: auto;
+    height: 100vh;
+}
