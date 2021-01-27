@@ -9,7 +9,7 @@ function players_apiCall(baseURL, key, statsType) {
         method: "POST"
     })
     .then(response => {
-        console.log(response);
+        console.log(response[0]);
         //var output = response;
     });
     //console.log(output);
