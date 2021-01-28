@@ -1,18 +1,22 @@
 const profootballAPI = 'https://profootballapi.com';
 const apiKey = '?api_key=NKWzXrvIJ2pacls6bSdjEUHoin8RCGM5';
-const offense = '&stats_type=offense';
 
-function players_apiCall(baseURL, key, statsType) {
-    var players_callURL = baseURL + '/players' + key + statsType + '&player_name=d.watson';
+const statsType_players = '/players';
+const statsType_schedule = '/schedule';
+const statsType_game = '/game';
+const statsType_teams = '/teams';
+const statsType_plays = '/plays';
+
+function gamesArray_apiCall(baseURL, key, statsType) {
+    var games_callURL = baseURL + statsType + key + '&season_type=REG&year=2019&week=4';
     $.ajax({
-        url: players_callURL,
-        method: "POST"
-    })
-    .then(response => {
-        console.log(response[0]);
-        //var output = response;
+        url: games_callURL,
+        method: "POST",
+        dataType: "json"
+    }).then(function (response) {
+        console.log(response[0].away);
     });
-    //console.log(output);
 }
 
-players_apiCall(profootballAPI,apiKey,offense);
+gamesArray_apiCall(profootballAPI,apiKey,statsType_schedule);
+
